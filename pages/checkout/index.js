@@ -587,7 +587,6 @@ class CheckoutPage extends Component {
                     <button
                       type="submit"
                       className="bg-black font-color-white w-100 border-none h-56 font-weight-semibold d-none d-lg-block checkout-btn"
-                      disabled={!selectedShippingOption}
                       onClick={this.captureOrder}
                     >
                       Make payment

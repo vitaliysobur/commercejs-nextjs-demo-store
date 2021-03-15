@@ -15,6 +15,7 @@ const Home = () => (
       <title>Home | commerce</title>
     </Head>
 
+    <div>This website serves for the DEMO purposes only and should not be considered for any purchases.</div>
     <HeroSection />
     <HomeBanner />
     <CategoryBanner />

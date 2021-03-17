@@ -6,6 +6,7 @@ import { Provider  } from 'react-redux';
 import commerce from '../lib/commerce';
 import { loadStripe } from '@stripe/stripe-js';
 import { setCustomer } from '../store/actions/authenticateActions';
+import TagManager from 'react-gtm-module';
 
 const MyApp = ({Component, pageProps}) => {
 
@@ -13,6 +14,8 @@ const MyApp = ({Component, pageProps}) => {
   const [stripePromise, setStripePromise] = useState(null);
 
   useEffect(() => {
+    TagManager.initialize({ gtmId: 'GTM-K43DJRQ' });
+
     if (process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY) { // has API key
       setStripePromise(loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY));
     }

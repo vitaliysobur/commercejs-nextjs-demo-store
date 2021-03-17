@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Link from 'next/link';
 import Head from 'next/head';
 import { connect } from 'react-redux';
+import TagManager from 'react-gtm-module';
 
 class Collections extends Component {
   constructor(props) {
@@ -166,4 +167,3 @@ class Collections extends Component {
 }
 
 export default connect(state => state)(Collections);
-

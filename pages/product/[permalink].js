@@ -13,6 +13,7 @@ import Footer from '../../components/common/Footer';
 import SocialMedia from '../../components/common/SocialMedia';
 import CategoryList from '../../components/products/CategoryList';
 import reduceProductImages from '../../lib/reduceProductImages';
+import TagManager from 'react-gtm-module';
 
 const detailView = `<p>
   Slightly textured fabric with tonal geometric design and a bit of shine
@@ -31,6 +32,10 @@ class Product extends Component {
     this.toggleDetails = this.toggleDetails.bind(this);
   }
 
+  componentDidMount() {
+    TagManager.dataLayer({dataLayer: {product: this.props.product}});
+  }
+
   toggleShipping() {
     const { showShipping } = this.state;
     this.setState({ showShipping: !showShipping });
@@ -46,7 +51,6 @@ class Product extends Component {
     const { product } = this.props;
 
     const images = reduceProductImages(product);
-
 
     return (
       <Root>

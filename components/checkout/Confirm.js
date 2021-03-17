@@ -3,6 +3,7 @@ import Root from '../../components/common/Root';
 import Link from 'next/link';
 import { connect } from 'react-redux';
 import { withRouter } from 'next/router';
+import TagManager from 'react-gtm-module';
 
 class Confirm extends Component {
   constructor(props) {
@@ -14,6 +15,8 @@ class Confirm extends Component {
   componentDidMount() {
     if (!this.props.orderReceipt) {
       this.props.router.push('/');
+    } else {
+      TagManager.dataLayer({dataLayer: {order: this.props.orderReceipt}});
     }
   }
 

@@ -19,6 +19,7 @@ import {
 import { connect } from 'react-redux';
 import { withRouter } from 'next/router';
 import { CardElement, Elements, ElementsConsumer } from '@stripe/react-stripe-js';
+import TagManager from 'react-gtm-module';
 
 /**
  * Render the checkout page
@@ -91,6 +92,8 @@ class CheckoutPage extends Component {
     if (this.props.cart && this.props.cart.total_items === 0) {
       this.redirectOutOfCheckout()
     }
+
+    TagManager.dataLayer({dataLayer: {checkout: this.props.checkout}});
 
     this.updateCustomerFromRedux();
     // on initial mount generate checkout token object from the cart,

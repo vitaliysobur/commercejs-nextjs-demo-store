@@ -33,7 +33,12 @@ class Product extends Component {
   }
 
   componentDidMount() {
-    TagManager.dataLayer({dataLayer: {product: this.props.product}});
+    TagManager.dataLayer({
+      dataLayer: {
+        event: 'product-detail',
+        product: this.props.product
+      }
+    })
   }
 
   toggleShipping() {

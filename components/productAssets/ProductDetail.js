@@ -4,6 +4,7 @@ import VariantSelector from '../productAssets/VariantSelector';
 import { animateScroll as scroll } from 'react-scroll';
 import { connect } from 'react-redux';
 import { addToCart } from '../../store/actions/cartActions';
+import TagManager from 'react-gtm-module';
 
 class ProductDetail extends Component {
   constructor(props) {
@@ -112,6 +113,13 @@ class ProductDetail extends Component {
     const { product } = this.props
     const { selectedOptions } = this.state;
     this.props.dispatch(addToCart(product.id, 1, selectedOptions))
+
+    TagManager.dataLayer({
+      dataLayer: {
+        event: 'add-to-cart',
+        product: this.props.product
+      }
+    })
   }
 
   render() {

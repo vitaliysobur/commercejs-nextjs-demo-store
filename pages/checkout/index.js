@@ -93,13 +93,18 @@ class CheckoutPage extends Component {
       this.redirectOutOfCheckout()
     }
 
-    TagManager.dataLayer({dataLayer: {checkout: this.props.checkout}});
-
     this.updateCustomerFromRedux();
     // on initial mount generate checkout token object from the cart,
     // and then subsequently below in componentDidUpdate if the props.cart.total_items has changed
     this.generateToken();
     this.getRegions(this.state.deliveryCountry);
+
+    TagManager.dataLayer({
+      dataLayer: {
+        event: 'checkout',
+        checkout: this.props.cart
+      }
+    });
   }
 
   componentDidUpdate(prevProps, prevState) {

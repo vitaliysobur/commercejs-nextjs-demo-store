@@ -16,7 +16,12 @@ class Confirm extends Component {
     if (!this.props.orderReceipt) {
       this.props.router.push('/');
     } else {
-      TagManager.dataLayer({dataLayer: {order: this.props.orderReceipt}});
+      TagManager.dataLayer({
+        dataLayer: {
+          event: 'purchase',
+          order: this.props.orderReceipt
+        }
+      });
     }
   }
 
